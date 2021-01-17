@@ -6,7 +6,7 @@ def Luminosity(image):
 	image_data = image.getdata()
 	Luminosity = []
 	for tup in image_data:
-		r, g, b = tup
+		r, g, b = tup[:3]
 		pixel_Luminosity =  (r+r+b+g+g+g)/6
 		Luminosity.append(pixel_Luminosity)
 	value = sum(Luminosity)/len(Luminosity)
