@@ -17,18 +17,14 @@ def Luminosity(image):
 	return value
 
 def Saturation(image):
-	image_data = image.getdata()
+	Saturation = []
+	for tup in image_data:
+		try:
+			val = (max(tup) - min(tup))/max(tup)
+			Saturation.append(val)
+		except ZeroDivisionError:
+			Saturation.append(0)
 
-	rg = [r - g for r,g,b in image_data]
-	yb = [0.5*(r+g) - b for r,g,b in image_data]
-	rgMean = sum(rg)/len(rg)
-	ybMean = sum(yb)/len(yb)
-	rgSDev = ((sum([(val - rgMean)**2 for val in rg]))/len(rg))**0.5
-	ybSDev = ((sum([(val - ybMean)**2 for val in yb]))/len(yb))**0.5
+	value = round(((sum(Saturation)/len(Saturation))*100),2)
 
-	rgybMean = (rgMean**2 + ybMean**2)**0.5
-	rgybSDev = (rgSDev**2 + ybSDev**2)**0.5
-
-	value = rgybSDev = 0.3*rgybMean
-	value = round(((value/7)*100), 2)
 	return value
