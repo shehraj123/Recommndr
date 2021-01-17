@@ -8,7 +8,7 @@ def index():
 
 @app.route('/my-link/')
 def my_link():
-	recommend('nature.jpg')
+	recommend()
 	return 'REDIRECTING'
 
 

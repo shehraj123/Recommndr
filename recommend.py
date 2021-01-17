@@ -24,7 +24,3 @@ def recommend(image):
 
     link = ['https://open.spotify.com/playlist', moods[keyword]]
     webbrowser.open('/'.join(link))
-
-if __name__ == '__main__':
-    testimage = Image.open('nature.jpg')
-    recommend(testimage)
