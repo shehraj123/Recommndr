@@ -2,9 +2,6 @@ import webbrowser
 from PIL import Image, ImageEnhance
 from PIL.ExifTags import TAGS
 
-img_file = 'nature.jpg'
-image = Image.open(img_file)
-
 def Luminosity(image):
 	image_data = image.getdata()
 	Luminosity = []
@@ -18,6 +15,7 @@ def Luminosity(image):
 
 def Saturation(image):
 	Saturation = []
+	image_data = image.getdata()
 	for tup in image_data:
 		try:
 			val = (max(tup) - min(tup))/max(tup)
